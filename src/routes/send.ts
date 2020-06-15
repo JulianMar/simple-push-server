@@ -1,5 +1,5 @@
 import { ServerRequest } from "https://deno.land/std/http/server.ts";
-import { sendPushToAll } from "../devices.ts";
+import { sendPushToAll } from "../devices/index.ts";
 import { parseBody } from "../router.ts";
 import { createMessage } from "../fcm/message.ts";
 

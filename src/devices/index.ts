@@ -1,5 +1,6 @@
-import { Sender } from "./fcm/sender.ts";
-import { message, addSender } from "./fcm/message.ts";
+import { Sender } from "../fcm/sender.ts";
+import { message, addSender } from "../fcm/message.ts";
+import { store, getAllFromPlatform } from "./firestore/index.ts";
 
 interface Device {
   deviceId: string;
@@ -16,15 +17,15 @@ const createDevice = (id: string, platform: string): Device => {
 };
 
 const addDevice = (device: Device) => {
-  pushDevices.add(device);
+  store(device)
 };
 
-const sendPushToAll = (message: message) => {
-  pushDevices.forEach((device) => {
-    if (device.platform === "web") {
-      sendWeb(message, device.deviceId);
-    }
-  });
+const sendPushToAll = async (message: message) => {
+  const users = await getAllFromPlatform("web")
+
+  users.forEach(({document}) => {
+    sendWeb(message, document.fields.id.stringValue);
+  })
 };
 
 const sendWeb = (message: message, id: string) => {
@@ -37,4 +38,5 @@ export {
   createDevice,
   addDevice,
   sendPushToAll,
+  Device
 };

@@ -31,6 +31,7 @@ const gtoken = new Gtoken.GoogleToken({
   scope: [
     "https://www.googleapis.com/auth/firebase.messaging",
     "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/datastore"
   ],
 });
 
@@ -50,8 +51,13 @@ const getToken = async () => {
   return gtoken.accessToken;
 };
 
+const getServiceAccount = () => {
+  return serviceAccount
+}
+
 export {
   login,
   refresh,
   getToken,
+  getServiceAccount
 };

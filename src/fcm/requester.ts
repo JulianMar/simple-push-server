@@ -1,4 +1,4 @@
-import { getToken, refresh } from "./login.ts";
+import { getToken } from "./login.ts";
 
 const requester = async (
   url: string,
@@ -21,6 +21,7 @@ const requester = async (
     "Authorization": "Bearer " + await getToken(),
   };
 
+  console.log(finalOptions)
   try {
     const response = await fetch(url, finalOptions);
     return response.json();

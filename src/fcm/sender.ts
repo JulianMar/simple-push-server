@@ -1,10 +1,12 @@
 import { requester } from "./requester.ts";
 import { message } from "./message.ts";
+import { getServiceAccount } from "./login.ts";
 
+const PUSH_URL = `https://fcm.googleapis.com/v1/projects/${getServiceAccount().project_id}/messages:send`
 export class Sender {
   static async send(message: message) {
     const result = await requester(
-      "https://fcm.googleapis.com/v1/projects/simple-push-server/messages:send",
+      PUSH_URL,
       {
         message,
       },
@@ -12,5 +14,6 @@ export class Sender {
         method: "POST",
       },
     );
+    console.log(result, message);
   }
 }
