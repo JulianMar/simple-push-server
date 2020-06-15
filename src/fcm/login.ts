@@ -1,5 +1,6 @@
 import { readJson } from "https://deno.land/std/fs/read_json.ts";
 import Gtoken from "https://dev.jspm.io/gtoken";
+import env from '../env.ts'
 
 interface ServiceAccount {
   "type": string;
@@ -16,7 +17,7 @@ interface ServiceAccount {
 
 let serviceAccount: ServiceAccount;
 const file: unknown = await readJson(
-  "auth.json",
+  env.FIREBASE_AUTH_FILE,
 );
 
 if (!file) {

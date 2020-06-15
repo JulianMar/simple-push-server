@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std/http/server.ts";
+import { serve} from "https://deno.land/std/http/server.ts";
 import { resolveRoute } from "./router.ts";
 import { login } from "./fcm/login.ts";
 
@@ -9,5 +9,9 @@ console.log("http://localhost:8000/");
 await login();
 
 for await (const req of server) {
-  resolveRoute(req);
+  try {
+    resolveRoute(req);
+  } catch (error) {
+    req.respond({ body: error.message, status: 401 });
+  }
 }

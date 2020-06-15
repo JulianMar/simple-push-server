@@ -30,7 +30,7 @@ const resolveRoute = (req: ServerRequest) => {
   const method = req.method;
 
   if (routes[method as HTTPVERBS].hasOwnProperty(url)) {
-    routes[method as HTTPVERBS][url](req);
+      routes[method as HTTPVERBS][url](req);
   } else {
     routes[HTTPVERBS.GET].default(req);
   }

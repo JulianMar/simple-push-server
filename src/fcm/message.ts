@@ -8,8 +8,8 @@ type message = {
 const createMessage = (title: string, body: string): message => {
   return {
     notification: {
-      body: title,
-      title: body,
+      body,
+      title,
     },
   };
 };
