@@ -1,4 +1,4 @@
-import { ServerRequest } from "https://deno.land/std/http/server.ts";
+import { ServerRequest } from "../deps.ts";
 import { sendPushToAll } from "../devices/index.ts";
 import { parseBody } from "../router.ts";
 import { createMessage } from "../fcm/message.ts";
@@ -23,7 +23,7 @@ export default async (req: ServerRequest) => {
 
   const message = createMessage(body.title, body.body);
 
-  // sendPushToAll(message);
+  sendPushToAll(message);
 
   req.respond({ body: "start sending" });
 };

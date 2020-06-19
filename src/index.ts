@@ -1,4 +1,4 @@
-import { serve} from "https://deno.land/std/http/server.ts";
+import { serve } from "./deps.ts";
 import { resolveRoute } from "./router.ts";
 import { login } from "./fcm/login.ts";
 

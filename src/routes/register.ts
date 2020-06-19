@@ -1,4 +1,4 @@
-import { ServerRequest } from "https://deno.land/std/http/server.ts";
+import { ServerRequest } from "../deps.ts";
 import { parseBody } from "../router.ts";
 import { createDevice, addDevice } from "../devices/index.ts";
 interface RegisterRequest {

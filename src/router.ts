@@ -1,4 +1,4 @@
-import { ServerRequest } from "https://deno.land/std/http/server.ts";
+import { ServerRequest } from "./deps.ts";
 import register from "./routes/register.ts";
 import index from "./routes/index.ts";
 import send from "./routes/send.ts";

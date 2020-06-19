@@ -1,4 +1,4 @@
-import { ServerRequest } from "https://deno.land/std/http/server.ts";
+import { ServerRequest } from "../deps.ts";
 export default function (req: ServerRequest) {
   req.respond({ body: "Hello World\n" });
 }

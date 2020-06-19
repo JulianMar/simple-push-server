@@ -1,5 +1,5 @@
-import {decode } from "https://deno.land/std/encoding/base64.ts"
-import { ServerRequest } from "https://deno.land/std/http/server.ts";
+import { decode } from "./deps.ts"
+import { ServerRequest } from "./deps.ts";
 import env from "./env.ts";
 
 const secureRoute = (req: ServerRequest) => {

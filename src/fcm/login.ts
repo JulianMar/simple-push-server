@@ -1,5 +1,5 @@
-import { readJson } from "https://deno.land/std/fs/read_json.ts";
-import Gtoken from "https://dev.jspm.io/gtoken";
+import { readJson } from "../deps.ts";
+import { Gtoken } from "../deps.ts";
 import env from '../env.ts'
 
 interface ServiceAccount {
@@ -26,7 +26,7 @@ if (!file) {
 
 serviceAccount = file as ServiceAccount;
 
-const gtoken = new Gtoken.GoogleToken({
+const gtoken = new Gtoken.default.GoogleToken({
   key: await serviceAccount.private_key,
   email: await serviceAccount.client_email,
   scope: [
